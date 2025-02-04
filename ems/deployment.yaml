@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ems-deployment
+  namespace: ems
+  labels:
+    app: ems
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: ems
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ems
+    spec:
+      containers:
+        - name: ems
+          image: ishan16/ems:1.0.1
+          volumeMounts:
+            - name: configmap
+              mountPath: /config
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  key: DB_USER
+                  name: ems-secret
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: DB_PASSWORD
+                  name: ems-secret
+      volumes:
+        - name: configmap
+          configMap:
+            name: ems-config

@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ems-config
+  namespace: ems
+data:
+  application.yaml: |
+    spring:
+      datasource:
+        url: jdbc:postgresql://postgres.database:5432/hcl
+        username: ${DB_USER}
+        password: ${DB_PASSWORD}
+    jpa:
+      show-sql: true
+      servlet:
+        multipart:
+          max-file-size: 10MB
+          max-request-size: 10MB
+      config:
+        location: /mnt/data/
+    server:
+      port: 8080

@@ -23,6 +23,7 @@ data:
           employeeCount: 179
           employeeStartIndex: 2
           monthYearSeparator: '-'
+          textSeparator: '#~#'
           outputFile: 'Salary Records.xlsx'
           fontStyle: 'Calibri'
     server:

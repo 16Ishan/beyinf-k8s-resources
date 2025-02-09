@@ -21,6 +21,7 @@ data:
       hcl:
         ald:
           employeeCount: 179
+          monthsCount: 255
           employeeStartIndex: 2
           monthYearSeparator: '-'
           textSeparator: '#~#'

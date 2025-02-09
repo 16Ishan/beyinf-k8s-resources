@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: ems
-          image: ishan16/ems:1.0.5
+          image: ishan16/ems:1.0.6
           volumeMounts:
             - name: configmap
               mountPath: /config
